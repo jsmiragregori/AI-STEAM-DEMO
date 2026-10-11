@@ -723,3 +723,154 @@ prueba('S6-P24 · Tres: quitar o vaciar el summary vuelve al HTML legacy, sin re
     assert.ok(!coleccion(col).some((it) => String(it.code || '').startsWith('S6T-')), `${NOMBRE[col]}: sin fixtures residuales`);
   }
 });
+
+// ════════════════════════════════════════════════════════════════════════════
+// S7-R1 · W01–W03 — el párrafo del resumen debe poder envolver (clase de corte)
+// sin alterar texto, conteo ni legacy. Se añaden AL FINAL y no modifican los 24
+// nodos anteriores (S6). Estos tres nodos se escriben ANTES del producto de R1:
+// su rojo funcional esperado es «falta la clase de corte en el párrafo».
+// ════════════════════════════════════════════════════════════════════════════
+
+const CLASE_CORTE = 'wrap-anywhere';
+const TOKEN_NEL = 'nel\u0085interior';
+
+/** NBSP100: 99 tokens pal01…pal99 + 1 token con NEL dentro, unidos con U+00A0. */
+const textoNBSP100 = () =>
+  [...Array.from({ length: 99 }, (_, i) => `pal${String(i + 1).padStart(2, '0')}`), TOKEN_NEL].join('\u00a0');
+
+/** Normal100: 100 tokens con espacio ordinario e idioma identificado. */
+const textoNormal100 = (idioma) =>
+  Array.from({ length: 100 }, (_, i) => `S7R1-${idioma}-n${String(i + 1).padStart(3, '0')}`).join(' ');
+
+/** Largo100: primer token `S7R1-<idioma>-` + 512 X, más 99 tokens normales. */
+const textoLargo100 = (idioma) =>
+  [`S7R1-${idioma}-${'X'.repeat(512)}`,
+   ...Array.from({ length: 99 }, (_, i) => `S7R1-${idioma}-w${String(i + 1).padStart(3, '0')}`)].join(' ');
+
+const CASOS_R1 = [
+  ['NBSP100', (idioma) => textoNBSP100()],
+  ['Normal100', (idioma) => textoNormal100(idioma)],
+  ['Largo100', (idioma) => textoLargo100(idioma)],
+];
+
+const attrsTitulo = (card) => /<h3 class="([^"]*)"/.exec(card)?.[1] ?? '';
+const cuentaClase = (attrs) => (attrs.match(new RegExp(CLASE_CORTE, 'g')) || []).length;
+
+/** Summary completo y distinto por idioma: el activo lleva el texto del caso. */
+function mapaR1(idioma, texto, caso) {
+  const mapa = {};
+  for (const otro of IDIOMAS) mapa[otro] = `S7R1-${otro}-${caso}-otro-idioma`;
+  mapa[idioma] = texto;
+  return mapa;
+}
+
+function assertClaseCorte(card, col, idioma, caso, p) {
+  assert.equal(cuentaClase(p.attrs), 1,
+    `${ctx(col, idioma, caso)}: el párrafo del resumen debe llevar «${CLASE_CORTE}» exactamente una vez (attrs:${p.attrs})`);
+  assert.ok(!attrsTitulo(card).includes(CLASE_CORTE), `${ctx(col, idioma, caso)}: el título no lleva la clase de corte`);
+  assert.ok(!pie(col, card).includes(CLASE_CORTE), `${ctx(col, idioma, caso)}: el pie no lleva la clase de corte`);
+  assert.ok(!ceja(card).includes(CLASE_CORTE), `${ctx(col, idioma, caso)}: la ceja no lleva la clase de corte`);
+}
+
+prueba('S7-R1-W01 · OER: 3 textos límite por idioma, contenido exacto y clase de corte solo en el resumen', () => {
+  const col = 'oer';
+  for (const idioma of IDIOMAS) {
+    for (const [caso, construir] of CASOS_R1) {
+      const code = `S7R1-W01-${idioma}-${caso}`;
+      const texto = construir(idioma);
+      const f = fixtureCol(col, { code, summary: mapaR1(idioma, texto, caso) });
+      let p;
+      const card = enclavarCol(col, [f], () => {
+        const c = tarjetaUnica(col, pintarCol(col, idioma, code), code);
+        p = assertResumen(c, col, idioma, texto, `W01 ${caso}`);
+        return c;
+      });
+      assert.ok(ceja(card).includes(code), `${ctx(col, idioma, `W01 ${caso}`)}: código conservado en la ceja`);
+      assertClaseCorte(card, col, idioma, `W01 ${caso}`, p);
+    }
+    const codeS = `S7R1-W01-${idioma}-sin-summary`;
+    const fs = fixtureCol(col, { code: codeS });
+    enclavarCol(col, [fs], () => {
+      const card = tarjetaUnica(col, pintarCol(col, idioma, codeS), codeS);
+      assert.equal(parrafosNoCodigo(card).length, 0, `${ctx(col, idioma, 'W01 sin summary')}: sin párrafo ni wrapper`);
+      assert.ok(!card.includes(CLASE_CORTE), `${ctx(col, idioma, 'W01 sin summary')}: sin clase de corte`);
+    });
+  }
+});
+
+prueba('S7-R1-W02 · Plantillas: resumen con corte, y legacy (vacío/sin idioma/ausente) sin clase nueva', () => {
+  const col = 'tpl';
+  for (const idioma of IDIOMAS) {
+    for (const [caso, construir] of CASOS_R1) {
+      const code = `S7R1-W02-${idioma}-${caso}`;
+      const texto = construir(idioma);
+      const f = fixtureCol(col, { code, summary: mapaR1(idioma, texto, caso) });
+      let p;
+      const card = enclavarCol(col, [f], () => {
+        const c = tarjetaUnica(col, pintarCol(col, idioma, code), code);
+        p = assertResumen(c, col, idioma, texto, `W02 ${caso}`);
+        return c;
+      });
+      assert.ok(ceja(card).includes(code), `${ctx(col, idioma, `W02 ${caso}`)}: código conservado en la ceja`);
+      assertClaseCorte(card, col, idioma, `W02 ${caso}`, p);
+    }
+  }
+  // Variantes legacy: el párrafo vuelve a la descripción, con sus clases y sin clase de corte.
+  for (const idioma of IDIOMAS) {
+    const codeBase = `S7R1-W02-${idioma}-base`;
+    const fBase = fixtureCol(col, { code: codeBase });
+    const baseCard = enclavarCol(col, [fBase], () =>
+      tarjetaUnica(col, pintarCol(col, idioma, codeBase), codeBase));
+    const variantes = [
+      ['activo-vacio', { ...mapaR1(idioma, 'x', 'base'), [idioma]: '' }],
+      ['sin-idioma-activo', (() => { const m = mapaR1(idioma, 'x', 'base'); delete m[idioma]; return m; })()],
+      ['ausencia-completa', null],
+    ];
+    for (const [nombre, summary] of variantes) {
+      const code = `S7R1-W02-${idioma}-${nombre}`;
+      const f = fixtureCol(col, { code });
+      if (summary !== null) f.summary = summary;
+      enclavarCol(col, [f], () => {
+        const card = tarjetaUnica(col, pintarCol(col, idioma, code), code);
+        const otros = parrafosNoCodigo(card);
+        assert.equal(otros.length, 1, `${ctx(col, idioma, `W02 ${nombre}`)}: exactamente el párrafo legacy`);
+        assert.equal(otros[0].crudo, f.description[idioma], `${ctx(col, idioma, `W02 ${nombre}`)}: descripción legacy exacta`);
+        assert.ok(!otros[0].attrs.includes(CLASE_CORTE), `${ctx(col, idioma, `W02 ${nombre}`)}: la descripción legacy no lleva la clase de corte`);
+        // estructuralmente igual a la base sin summary salvo código/id: compara el párrafo y el pie
+        assert.equal(parrafosNoCodigo(baseCard)[0].attrs, otros[0].attrs, `${ctx(col, idioma, `W02 ${nombre}`)}: clases del párrafo legacy intactas`);
+        assert.ok(!pie(col, card).includes(CLASE_CORTE), `${ctx(col, idioma, `W02 ${nombre}`)}: pie sin clase de corte`);
+      });
+    }
+  }
+});
+
+prueba('S7-R1-W03 · DOC: 3 textos límite por idioma, contenido exacto y clase de corte solo en el resumen', () => {
+  const col = 'doc';
+  for (const idioma of IDIOMAS) {
+    for (const [caso, construir] of CASOS_R1) {
+      const code = `S7R1-W03-${idioma}-${caso}`;
+      const texto = construir(idioma);
+      const f = fixtureCol(col, { code, summary: mapaR1(idioma, texto, caso) });
+      let p;
+      const card = enclavarCol(col, [f], () => {
+        const c = tarjetaUnica(col, pintarCol(col, idioma, code), code);
+        p = assertResumen(c, col, idioma, texto, `W03 ${caso}`);
+        return c;
+      });
+      assert.ok(ceja(card).includes(code), `${ctx(col, idioma, `W03 ${caso}`)}: código conservado en la ceja`);
+      assertClaseCorte(card, col, idioma, `W03 ${caso}`, p);
+    }
+    const codeS = `S7R1-W03-${idioma}-sin-summary`;
+    const fs = fixtureCol(col, { code: codeS });
+    enclavarCol(col, [fs], () => {
+      const card = tarjetaUnica(col, pintarCol(col, idioma, codeS), codeS);
+      assert.equal(parrafosNoCodigo(card).length, 0, `${ctx(col, idioma, 'W03 sin summary')}: sin párrafo ni wrapper`);
+      assert.ok(!card.includes(CLASE_CORTE), `${ctx(col, idioma, 'W03 sin summary')}: sin clase de corte`);
+    });
+  }
+  // Integridad tras W01–W03 (sin escrituras: este archivo jamás toca assets/data).
+  for (const colFinal of COLS) {
+    assert.equal(coleccion(colFinal), ORIG_REF[colFinal], `${NOMBRE[colFinal]}: identidad del array conservada tras R1`);
+    assert.ok(!coleccion(colFinal).some((it) => String(it.code || '').startsWith('S7R1-')), `${NOMBRE[colFinal]}: sin fixtures residuales R1`);
+  }
+});
