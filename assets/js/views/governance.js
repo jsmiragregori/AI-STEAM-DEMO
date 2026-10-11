@@ -636,7 +636,7 @@ function tabDocumentos(govT) {
           </div>
           <div class="p-7 pt-5 flex flex-col justify-between flex-1">
           <div>
-            ${summaryText ? `<p class="text-base text-gray-600 mb-4 leading-relaxed">${esc(summaryText)}</p>` : ''}
+            ${summaryText ? `<p class="text-base text-gray-600 mb-4 leading-relaxed wrap-anywhere">${esc(summaryText)}</p>` : ''}
             <div class="flex items-start gap-4 mb-4">
               <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" style="background:#ffffff; box-shadow: inset 0 2px 6px rgb(73 24 173 / .08)">
                 <i data-lucide="file-text" class="w-6 h-6" style="color:#4918AD"></i>

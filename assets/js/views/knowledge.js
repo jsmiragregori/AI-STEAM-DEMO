@@ -536,7 +536,7 @@ function renderOerGridContent(search) {
         <h3 class="rd-card-mp-title line-clamp-3">${esc(rTitle)}</h3>
       </div>
       <div class="p-7 pt-5 flex-1 flex flex-col">
-        ${summaryText ? `<p class="text-base text-gray-600 mb-4 leading-relaxed">${esc(summaryText)}</p>` : ''}
+        ${summaryText ? `<p class="text-base text-gray-600 mb-4 leading-relaxed wrap-anywhere">${esc(summaryText)}</p>` : ''}
         <!-- Header: Type + Levels (secondary, compact) -->
         <div class="flex items-center gap-2 mb-3">
           ${oerShowType ? `<span class="w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" style="background:#ffffff"><i data-lucide="${esc(rIcon)}" class="w-5 h-5 text-eu-purple"></i></span><span class="text-sm font-bold uppercase text-gray-600 tracking-wider">${esc(rType)}</span>` : ''}
@@ -945,7 +945,7 @@ function renderTemplatesGridContent(search) {
       </div>
       <div class="p-7 pt-5 flex flex-col flex-1">
       <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" style="background:#ffffff"><i data-lucide="${esc(lucideName(iconStr, 'file-text'))}" class="w-7 h-7 text-eu-purple"></i></div>
-      <p class="text-base text-gray-600 mb-4 flex-1 leading-relaxed">${esc(summaryText || pickLang(tpl.description, ''))}</p>
+      <p class="text-base text-gray-600 mb-4 flex-1 leading-relaxed${summaryText ? ' wrap-anywhere' : ''}">${esc(summaryText || pickLang(tpl.description, ''))}</p>
       <div class="flex flex-wrap gap-2 mb-4">
         ${showType && typeStr ? `<button data-tmpl-filter-type="${esc(tpl.typeId)}" class="text-sm px-3 py-1 rounded-full font-bold cursor-pointer transition-all ${filtersHere.typeId === tpl.typeId ? 'ring-2 ring-offset-1 ring-eu-blue' : ''}" style="background:rgb(86 32 246/.10); color:#5620F6">${esc(typeStr)}</button>` : ''}
         ${showRoute ? routes.map(r => `<button data-tmpl-filter-route="${esc(r.id)}" class="text-sm px-3 py-1 rounded-full font-bold cursor-pointer transition-all ${filtersHere.routeIds.includes(r.id) ? 'ring-2 ring-offset-1 ring-eu-blue' : ''}" style="background:rgb(73 24 173/.10); color:#4918AD">${esc(r.label)}</button>`).join('') : ''}
