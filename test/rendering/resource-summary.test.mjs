@@ -596,9 +596,16 @@ prueba('S6-P20 · Tres × idioma: chips, fechas, licencia y pie idénticos a la 
         assert.equal(ceja(card), ceja(baseCard), `${ctx(col, idioma, 'P20')}: ceja idéntica`);
         assert.equal(pie(col, card), pie(col, baseCard), `${ctx(col, idioma, 'P20')}: pie idéntico`);
         if (col === 'tpl') {
-          const j = card.indexOf(texto);
-          const normalizado = card.slice(0, j) + f.description[idioma] + card.slice(j + texto.length);
-          assert.equal(normalizado, baseCard, `${ctx(col, idioma, 'P20')}: solo cambia el contenido del párrafo`);
+          const pBase = assertResumen(baseCard, col, idioma, fBase.description[idioma], 'P20-base');
+          const attrsEsperados = pBase.attrs.replace('leading-relaxed"', 'leading-relaxed wrap-anywhere"');
+          assert.notEqual(attrsEsperados, pBase.attrs, `${ctx(col, idioma, 'P20')}: ancla de clase legacy encontrada`);
+          assert.equal(p.attrs, attrsEsperados, `${ctx(col, idioma, 'P20')}: solo se añade wrap-anywhere al párrafo`);
+          const marca = `<p${p.attrs}>${p.crudo}</p>`;
+          const marcaBase = `<p${pBase.attrs}>${pBase.crudo}</p>`;
+          const i = card.indexOf(marca);
+          assert.ok(i !== -1, `${ctx(col, idioma, 'P20')}: párrafo exacto encontrado`);
+          const normalizado = card.slice(0, i) + marcaBase + card.slice(i + marca.length);
+          assert.equal(normalizado, baseCard, `${ctx(col, idioma, 'P20')}: solo cambian texto y clase autorizada del párrafo`);
         } else {
           const marca = `<p${p.attrs}>${p.crudo}</p>`;
           const i = card.indexOf(marca);
