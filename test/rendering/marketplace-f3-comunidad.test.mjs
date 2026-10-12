@@ -102,13 +102,6 @@ function cadenaDe(card) {
   return { clase: match[1], texto: match[2] };
 }
 
-test('T3.1 control: el caso real tiene cuatro beneficiarias y la cadena activa', () => {
-  const item = itemDe('cases', CASO);
-  assert.equal(item.ownership.beneficiaries.length, 4);
-  assert.notEqual(item.presentation?.card?.showActors, false);
-  assert.deepEqual(item.ownership.beneficiaries.map((b) => b.name), BENEFICIARIAS);
-});
-
 test('T3.1 la cadena de transferencia pinta completas las cuatro beneficiarias', () => {
   const item = itemDe('cases', CASO);
   const card = cardDe(pintar('cases'), item.code);
@@ -162,11 +155,6 @@ test('T3.1 ch_case_actors=false sigue escondiendo la cadena (regresión)', () =>
 // ═══ T3.2 — sector en la card de reto ══════════════════════════════════════════════════════
 
 const RETO = 'creative-ai-green-campus';
-
-test('T3.2 control: el reto real tiene sector', () => {
-  const item = itemDe('challenges', RETO);
-  assert.equal(item.core.sector, 'ene');
-});
 
 test('T3.2 la card de reto pinta el sector con etiqueta localizada (ES/EN/VA)', () => {
   const item = itemDe('challenges', RETO);

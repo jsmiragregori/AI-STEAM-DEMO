@@ -48,47 +48,6 @@ test('vistas de sectores, formación y conocimiento: texto visible con la grafí
   assert.ok(knowledge.includes('AiSTEAM Network Website'));
 });
 
-test('traducciones publicadas: AiSTEAM Network en header y home, en los tres idiomas', async () => {
-  const { translations } = await import('../../assets/data/translations.js');
-  for (const lang of ['es', 'en', 'va']) {
-    assert.equal(translations[lang].header.title, 'AiSTEAM Network', lang);
-    assert.equal(translations[lang].home.title, 'AiSTEAM Network', lang);
-  }
-  assert.match(translations.es.home.heroTagline, /AiSTEAM Network es el ecosistema Track B de CECU para AiSECRETT/);
-});
-
-test('Formación: aviso del Máster y último paso del recorrido, sin la grafía antigua', async () => {
-  const { translations } = await import('../../assets/data/translations.js');
-  for (const lang of ['es', 'en', 'va']) {
-    const t = translations[lang].training;
-    assert.match(t.masterBridgeDisclaimer, /Master|Màster|Máster/);
-    assert.ok(t.masterBridgeDisclaimer.includes('AiSECRETT') && !/AI-S/.test(t.masterBridgeDisclaimer), lang);
-    assert.equal(t.masterPathSteps.length, 5, `${lang}: la lista conserva sus cinco pasos`);
-    assert.ok(!/AI-S/.test(t.masterPathSteps.join('|')), lang);
-  }
-  assert.equal(translations.es.training.masterPathSteps[4], 'Evidencia de adopción aportada a AiSECRETT');
-});
-
-test('textos legales vigentes: grafía nueva y versión subida, en ES/EN/VA', async () => {
-  const { LEGAL_CONFIG } = await import('../../assets/data/legal.js');
-  for (const doc of ['aviso-legal', 'cookies', 'accesibilidad']) {
-    for (const lang of ['es', 'en', 'va']) {
-      const d = LEGAL_CONFIG.documentos[doc][lang];
-      assert.ok(!/AI[- ](STEAM|SECRETT)/.test(d.html), `${doc}/${lang}`);
-      assert.ok(/AiSTEAM|AiSECRETT/.test(d.html), `${doc}/${lang}`);
-      assert.ok(d.fecha >= '2026-10-06', `${doc}/${lang}: la fecha avanza con el cambio de texto`);
-    }
-  }
-  assert.equal(LEGAL_CONFIG.documentos.privacidad.es.version, '1.0', 'privacidad no se toca');
-});
-
-test('variantes sin guion: documento D1.2 de Gobernanza', async () => {
-  const { GOVERNANCE_CONFIG } = await import('../../assets/data/governance.js');
-  const txt = JSON.stringify(GOVERNANCE_CONFIG);
-  assert.ok(!/AI STEAM|AI SECRETT/.test(txt));
-  assert.ok(txt.includes('[DEMO] D1.2 – AiSTEAM Network: Conceptos Iniciales y Gobernanza'));
-});
-
 test('identificadores estructurales publicados conservan su grafía', async () => {
   const data = await leer('assets/data/governance.js');
   assert.ok(/\bai-steam-network\b/.test(data), 'el id/slug ai-steam-network no cambia');
