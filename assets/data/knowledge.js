@@ -325,6 +325,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "15 min",
         "format": "PDF",
         "updatedAt": "2026-05-18",
+        "summary": {
+          "es": "Guía introductoria para trabajar la ética de la inteligencia artificial en formación profesional, con situaciones de aula sobre privacidad, sesgos y uso responsable de herramientas digitales.",
+          "en": "An introductory guide to exploring artificial intelligence ethics in vocational education, with classroom scenarios about privacy, bias and responsible use of digital tools.",
+          "va": "Guia introductòria per a treballar l'ètica de la intel·ligència artificial en formació professional, amb situacions d'aula sobre privacitat, biaixos i ús responsable d'eines digitals."
+        },
         "url": "https://aules.edu.gva.es/etica-ia-fp",
         "linkType": "download",
         "external": false
@@ -353,6 +358,11 @@ export const KNOWLEDGE_CONFIG = {
         "validationStatus": "validated",
         "duration": "1h 30 min",
         "format": "PDF",
+        "summary": {
+          "es": "Manual práctico para comprender cómo los gemelos digitales representan procesos industriales, con ejemplos de modelado, conexión de datos y simulación orientados al aprendizaje y la mejora productiva.",
+          "en": "A practical manual explaining how digital twins represent industrial processes, with examples of modelling, data connections and simulation for learning and improving production.",
+          "va": "Manual pràctic per a comprendre com els bessons digitals representen processos industrials, amb exemples de modelatge, connexió de dades i simulació orientats a l'aprenentatge i la millora productiva."
+        },
         "url": "https://oert.org/digital-twins-manual-v2.1",
         "linkType": "external",
         "external": true
@@ -381,6 +391,11 @@ export const KNOWLEDGE_CONFIG = {
         "validationStatus": "validated",
         "duration": "",
         "format": "ZIP",
+        "summary": {
+          "es": "Colección de imágenes de plagas en cítricos de la Comunitat Valenciana, pensada para explorar técnicas de visión artificial y practicar la clasificación de problemas fitosanitarios.",
+          "en": "A collection of citrus pest images from the Valencian Community, designed for exploring computer vision techniques and practising the classification of plant health problems.",
+          "va": "Col·lecció d'imatges de plagues en cítrics de la Comunitat Valenciana, pensada per a explorar tècniques de visió artificial i practicar la classificació de problemes fitosanitaris."
+        },
         "url": "https://github.com/ava-asaja/dataset-plagas-citricos",
         "linkType": "external",
         "external": true
@@ -412,6 +427,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "45 min",
         "format": "XLSX",
         "updatedAt": "2026-05-15",
+        "summary": {
+          "es": "Plantilla para organizar el análisis de sesgos en modelos de inteligencia artificial, comparar resultados entre grupos y documentar posibles medidas de mejora en actividades educativas.",
+          "en": "A template for organising bias analysis in artificial intelligence models, comparing results across groups and documenting possible improvements through educational activities.",
+          "va": "Plantilla per a organitzar l'anàlisi de biaixos en models d'intel·ligència artificial, comparar resultats entre grups i documentar possibles mesures de millora en activitats educatives."
+        },
         "url": "https://resources.CECU.gva.es/plantilla-bias-analysis.zip",
         "linkType": "download",
         "external": false
@@ -441,6 +461,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "12h",
         "format": "MP4",
         "updatedAt": "2026-04-20",
+        "summary": {
+          "es": "Recorrido audiovisual de iniciación al aprendizaje automático con Python para alumnado de FP, con ejercicios de preparación de datos, entrenamiento de modelos y evaluación de resultados.",
+          "en": "An introductory video course on machine learning with Python for vocational students, including exercises in data preparation, model training and evaluation of results.",
+          "va": "Recorregut audiovisual d'iniciació a l'aprenentatge automàtic amb Python per a alumnat de FP, amb exercicis de preparació de dades, entrenament de models i avaluació de resultats."
+        },
         "url": "https://youtube.com/watch?v=ml-python-fp-intro",
         "linkType": "external",
         "external": true
@@ -470,6 +495,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "20 min",
         "format": "PDF",
         "updatedAt": "2026-05-10",
+        "summary": {
+          "es": "Recurso introductorio para explorar el Reglamento europeo de inteligencia artificial desde la administración pública, mediante ejemplos de clasificación de riesgos, transparencia y revisión de usos institucionales.",
+          "en": "An introductory resource exploring the European AI Act from a public administration perspective, with examples of risk classification, transparency and review of institutional uses.",
+          "va": "Recurs introductori per a explorar el Reglament europeu d'intel·ligència artificial des de l'administració pública, mitjançant exemples de classificació de riscos, transparència i revisió d'usos institucionals."
+        },
         "url": "https://CECU.gva.es/recursos/reglamento-ia-ue-administracion",
         "linkType": "external",
         "external": true
@@ -498,6 +528,11 @@ export const KNOWLEDGE_CONFIG = {
         "validationStatus": "pending",
         "duration": "2h",
         "format": "PDF",
+        "summary": {
+          "es": "Introducción al procesamiento del lenguaje natural aplicado a textos clínicos, con actividades sobre extracción de información, clasificación documental y tratamiento cuidadoso de datos en contextos formativos.",
+          "en": "An introduction to natural language processing for clinical texts, with activities on information extraction, document classification and careful handling of data in educational settings.",
+          "va": "Introducció al processament del llenguatge natural aplicat a textos clínics, amb activitats sobre extracció d'informació, classificació documental i tractament acurat de dades en contextos formatius."
+        },
         "url": "https://oert.org/nlp-clinical-analysis-manual",
         "linkType": "external",
         "external": true
@@ -527,6 +562,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "",
         "format": "ZIP",
         "updatedAt": "2026-05-05",
+        "summary": {
+          "es": "Colección de imágenes de patrimonio cultural para experimentar con clasificación visual, reconocimiento de elementos y organización de colecciones digitales en proyectos educativos de inteligencia artificial.",
+          "en": "A collection of cultural heritage images for experimenting with visual classification, element recognition and organisation of digital collections in educational artificial intelligence projects.",
+          "va": "Col·lecció d'imatges de patrimoni cultural per a experimentar amb classificació visual, reconeixement d'elements i organització de col·leccions digitals en projectes educatius d'intel·ligència artificial."
+        },
         "url": "https://zenodo.org/records/cultural-heritage-images-5k",
         "linkType": "external",
         "external": true
@@ -557,6 +597,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "1h",
         "format": "ZIP",
         "updatedAt": "2026-02-18",
+        "summary": {
+          "es": "Conjunto de propuestas y plantillas para explorar la inteligencia artificial generativa en artes escénicas, desde ideas de guion hasta conceptos visuales y ejercicios de creación colectiva.",
+          "en": "A set of activities and templates for exploring generative artificial intelligence in performing arts, from script ideas to visual concepts and collaborative creative exercises.",
+          "va": "Conjunt de propostes i plantilles per a explorar la intel·ligència artificial generativa en arts escèniques, des d'idees de guió fins a conceptes visuals i exercicis de creació col·lectiva."
+        },
         "url": "https://resources.CECU.gva.es/toolkit-ia-generativa-artes-escenicas.zip",
         "linkType": "download",
         "external": false
@@ -589,6 +634,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "35 min",
         "format": "PDF",
         "updatedAt": "2026-01-12",
+        "summary": {
+          "es": "Guía para formular instrucciones útiles a herramientas de IA en proyectos STEAM, compartir ejemplos entre docentes y mejorar respuestas mediante pruebas, revisión y aprendizaje colaborativo.",
+          "en": "A guide to writing useful prompts for AI tools in STEAM projects, sharing examples among teachers and improving responses through experimentation, review and collaborative learning.",
+          "va": "Guia per a formular instruccions útils a eines d'IA en projectes STEAM, compartir exemples entre docents i millorar respostes mitjançant proves, revisió i aprenentatge col·laboratiu."
+        },
         "url": "https://CECU.gva.es/recursos/guia-prompting-steam-comunidades-practica",
         "linkType": "external",
         "external": true
@@ -618,6 +668,11 @@ export const KNOWLEDGE_CONFIG = {
         "validationStatus": "draft",
         "duration": "",
         "format": "ZIP",
+        "summary": {
+          "es": "Colección de bocetos y prototipos para explorar la clasificación de propuestas creativas, comparar rasgos visuales y desarrollar ejercicios de aprendizaje automático vinculados al diseño y la fabricación.",
+          "en": "A collection of sketches and prototypes for exploring creative classification, comparing visual features and developing machine learning exercises connected to design and manufacturing.",
+          "va": "Col·lecció d'esbossos i prototips per a explorar la classificació de propostes creatives, comparar trets visuals i desenvolupar exercicis d'aprenentatge automàtic vinculats al disseny i la fabricació."
+        },
         "url": "https://zenodo.org/records/ai-steam-creative-sketches-prototypes",
         "linkType": "external",
         "external": true
@@ -649,6 +704,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "2h 15 min",
         "format": "MP4",
         "updatedAt": "2025-11-05",
+        "summary": {
+          "es": "Vídeo práctico para experimentar con inteligencia artificial visual en el aula STEAM, mediante actividades de reconocimiento de imágenes, exploración de modelos y reflexión sobre sus resultados.",
+          "en": "A practical video for experimenting with visual artificial intelligence in STEAM classrooms, through image recognition activities, model exploration and reflection on the results.",
+          "va": "Vídeo pràctic per a experimentar amb intel·ligència artificial visual a l'aula STEAM, mitjançant activitats de reconeixement d'imatges, exploració de models i reflexió sobre els seus resultats."
+        },
         "url": "https://youtube.com/watch?v=ai-steam-visual-lab",
         "linkType": "external",
         "external": true
@@ -681,6 +741,11 @@ export const KNOWLEDGE_CONFIG = {
         "duration": "1h 45 min",
         "format": "PDF",
         "updatedAt": "2025-09-19",
+        "summary": {
+          "es": "Manual para organizar la transferencia de conocimiento sobre IA y STEAM en centros de FP, con propuestas para compartir experiencias, adaptar recursos y coordinar proyectos con entidades colaboradoras.",
+          "en": "A manual for organising AI and STEAM knowledge transfer in vocational centres, with suggestions for sharing experiences, adapting resources and coordinating projects with partner organisations.",
+          "va": "Manual per a organitzar la transferència de coneixement sobre IA i STEAM en centres de FP, amb propostes per a compartir experiències, adaptar recursos i coordinar projectes amb entitats col·laboradores."
+        },
         "url": "https://oert.org/ai-steam-transfer-manual-vet-centres",
         "linkType": "external",
         "external": true
