@@ -1732,6 +1732,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Informe de ejemplo sobre el avance del proyecto durante el primer trimestre de 2026, con actividades realizadas, dificultades detectadas y prioridades de trabajo para el siguiente periodo.",
+          "en": "A sample report on project progress during the first quarter of 2026, covering completed activities, identified difficulties and work priorities for the following period.",
+          "va": "Informe d'exemple sobre l'avanç del projecte durant el primer trimestre de 2026, amb activitats realitzades, dificultats detectades i prioritats de treball per al següent període."
         }
       },
       {
@@ -1765,6 +1770,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Orientaciones para preparar, revisar y compartir recursos educativos abiertos, con criterios sobre atribución de autoría, elección de licencias y reutilización de contenidos en la comunidad.",
+          "en": "Guidelines for preparing, reviewing and sharing open educational resources, with criteria covering author attribution, licence selection and reuse of content within the community.",
+          "va": "Orientacions per a preparar, revisar i compartir recursos educatius oberts, amb criteris sobre atribució d'autoria, elecció de llicències i reutilització de continguts en la comunitat."
         }
       },
       {
@@ -1798,6 +1808,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Actas de ejemplo del Comité Directivo durante el primer trimestre de 2026, centradas en la revisión de actividades, la coordinación de equipos y el seguimiento de acuerdos.",
+          "en": "Sample Steering Committee minutes for the first quarter of 2026, focusing on activity reviews, team coordination and follow-up of agreements.",
+          "va": "Actes d'exemple del Comitè Directiu durant el primer trimestre de 2026, centrades en la revisió d'activitats, la coordinació d'equips i el seguiment d'acords."
         }
       },
       {
@@ -1831,6 +1846,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Guía de iniciación a ConsensUE para entidades participantes, con orientaciones para acceder a los espacios de consulta, aportar propuestas y seguir los procesos de deliberación de la comunidad.",
+          "en": "An introductory ConsensUE guide for participating organisations, with guidance on accessing consultation spaces, contributing proposals and following the community's deliberation processes.",
+          "va": "Guia d'iniciació a ConsensUE per a entitats participants, amb orientacions per a accedir als espais de consulta, aportar propostes i seguir els processos de deliberació de la comunitat."
         }
       },
       {
@@ -1864,6 +1884,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Introducción a los conceptos que orientan AiSTEAM Network, con una descripción de su organización, los espacios de participación y los mecanismos de coordinación entre los actores de la red.",
+          "en": "An introduction to the concepts guiding AiSTEAM Network, describing its organisation, participation spaces and coordination mechanisms connecting the different actors across the network.",
+          "va": "Introducció als conceptes que orienten AiSTEAM Network, amb una descripció de la seua organització, els espais de participació i els mecanismes de coordinació entre els actors de la xarxa."
         }
       },
       {
@@ -1897,6 +1922,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Modelo orientativo para definir colaboraciones con entidades interesadas, concretar objetivos comunes, distribuir tareas y establecer canales de seguimiento de las actividades acordadas en la red.",
+          "en": "An illustrative template for defining collaborations with interested organisations, setting shared objectives, assigning tasks and establishing channels to monitor activities agreed within the network.",
+          "va": "Model orientatiu per a definir col·laboracions amb entitats interessades, concretar objectius comuns, distribuir tasques i establir canals de seguiment de les activitats acordades en la xarxa."
         }
       },
       {
@@ -1930,6 +1960,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Propuesta de principios para abordar retos industriales de forma responsable, considerando la transparencia, el impacto social y ambiental y la colaboración respetuosa entre organizaciones participantes.",
+          "en": "A proposed set of principles for addressing industrial challenges responsibly, considering transparency, social and environmental impact and respectful collaboration among participating organisations.",
+          "va": "Proposta de principis per a abordar reptes industrials de manera responsable, considerant la transparència, l'impacte social i ambiental i la col·laboració respectuosa entre organitzacions participants."
         }
       },
       {
@@ -1963,6 +1998,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Acta de ejemplo de la primera Asamblea General, con una síntesis de los temas tratados, los acuerdos de coordinación y las tareas propuestas para la siguiente etapa.",
+          "en": "Sample minutes from the first General Assembly, summarising the topics discussed, coordination agreements and tasks proposed for the next stage of work.",
+          "va": "Acta d'exemple de la primera Assemblea General, amb una síntesi dels temes tractats, els acords de coordinació i les tasques proposades per a la següent etapa."
         }
       },
       {
@@ -1996,6 +2036,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Propuesta de criterios para fomentar la igualdad de género y la diversidad en el proyecto, mediante participación inclusiva, comunicación respetuosa y revisión de posibles barreras de acceso.",
+          "en": "Proposed criteria for promoting gender equality and diversity in the project, through inclusive participation, respectful communication and review of potential barriers to access.",
+          "va": "Proposta de criteris per a fomentar la igualtat de gènere i la diversitat en el projecte, mitjançant participació inclusiva, comunicació respectuosa i revisió de possibles barreres d'accés."
         }
       },
       {
@@ -2045,6 +2090,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Documento marco que presenta los objetivos compartidos del consorcio AiSECRETT, las responsabilidades de sus socios y las pautas de coordinación para desarrollar actividades y gestionar resultados conjuntos.",
+          "en": "A framework document presenting the AiSECRETT consortium's shared objectives, partner responsibilities and coordination guidelines for carrying out activities and managing joint results.",
+          "va": "Document marc que presenta els objectius compartits del consorci AiSECRETT, les responsabilitats dels seus socis i les pautes de coordinació per a desenvolupar activitats i gestionar resultats conjunts."
         }
       },
       {
@@ -2078,6 +2128,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Plan orientativo para organizar el ciclo de vida de los datos del proyecto, desde su recogida y documentación hasta el almacenamiento, acceso y conservación de resultados.",
+          "en": "An illustrative plan for organising the project data lifecycle, from collection and documentation through to storage, access and preservation of results.",
+          "va": "Pla orientatiu per a organitzar el cicle de vida de les dades del projecte, des de la recollida i documentació fins a l'emmagatzematge, accés i conservació de resultats."
         }
       },
       {
@@ -2111,6 +2166,11 @@ export const GOVERNANCE_CONFIG = {
           "es": "",
           "en": "",
           "va": ""
+        },
+        "summary": {
+          "es": "Modelo de declaración para identificar posibles conflictos de interés y expresar compromisos éticos, promoviendo la transparencia y la responsabilidad en las decisiones y colaboraciones del proyecto.",
+          "en": "A declaration template for identifying potential conflicts of interest and expressing ethical commitments, promoting transparency and accountability in project decisions and collaborations.",
+          "va": "Model de declaració per a identificar possibles conflictes d'interés i expressar compromisos ètics, promovent la transparència i la responsabilitat en les decisions i col·laboracions del projecte."
         }
       }
     ]
