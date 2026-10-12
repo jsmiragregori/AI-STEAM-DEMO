@@ -77,6 +77,7 @@ const tituloDe = (code) => ({ es: `${code} — título ES`, en: `${code} — tit
 function fixtureCol(col, campos = {}, baseElegida = null) {
   const base = baseElegida || (col === 'doc' ? DOC_ARCHIVO : coleccion(col)[0]);
   const item = structuredClone(base);
+  delete item.summary; // punto de partida fijo: el contenido real puede traer su propio resumen
   Object.assign(item, campos);
   item.id = `s6t-${String(item.code).toLowerCase()}`;
   item.visible = true;

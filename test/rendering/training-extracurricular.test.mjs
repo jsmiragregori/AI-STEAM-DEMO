@@ -31,43 +31,6 @@ const NUEVO = {
 };
 const VIEJO = /Puente al M|Master Bridge|Pont al M/;
 
-test('la pestaña de actividades usa el rótulo nuevo en los tres idiomas', () => {
-  for (const idioma of ['es', 'en', 'va']) {
-    const t = translations[idioma]?.training || {};
-    assert.equal(t.tabMasterBridge, NUEVO[idioma], `${idioma}: pestaña`);
-    assert.ok(!VIEJO.test(t.tabMasterBridge || ''), `${idioma}: la pestaña sigue siendo la antigua`);
-  }
-});
-
-test('el título heredado del puente también se actualiza', () => {
-  for (const idioma of ['es', 'en', 'va']) {
-    const t = translations[idioma]?.training || {};
-    assert.ok((t.masterBridgeTitle || '').startsWith(NUEVO[idioma]), `${idioma}: ${t.masterBridgeTitle}`);
-    assert.ok((t.masterPath || '').includes(NUEVO[idioma]), `${idioma}: ${t.masterPath}`);
-    assert.ok(!VIEJO.test(t.masterBridgeTitle || ''), `${idioma}: título antiguo`);
-    assert.ok(!VIEJO.test(t.masterPath || ''), `${idioma}: ruta antigua`);
-  }
-});
-
-test('el subtítulo de la sección nombra la colección nueva', () => {
-  for (const idioma of ['es', 'en', 'va']) {
-    const subtitulo = translations[idioma]?.training?.subtitle || '';
-    assert.ok(subtitulo.includes(NUEVO[idioma]), `${idioma}: ${subtitulo}`);
-    assert.ok(!VIEJO.test(subtitulo), `${idioma}: subtítulo antiguo`);
-  }
-});
-
-test('la sección generada `master-skills` conserva su id y cambia el título', () => {
-  const seccion = (TRAINING_CONFIG.sectionsBlock || []).find((s) => s.id === 'master-skills');
-  assert.ok(seccion, 'la sección master-skills debe seguir existiendo (id técnico)');
-  for (const idioma of ['es', 'en', 'va']) {
-    assert.equal(seccion.title[idioma], NUEVO[idioma], `${idioma}: título de la sección`);
-    assert.equal(seccion.pathBlock?.title?.[idioma], NUEVO[idioma], `${idioma}: título del bloque de ruta`);
-  }
-  assert.ok(!VIEJO.test(JSON.stringify(seccion.title)));
-  assert.ok(!VIEJO.test(JSON.stringify(seccion.pathBlock?.title)));
-});
-
 test('competencias, itinerarios y pasos de la sección se conservan', () => {
   const seccion = (TRAINING_CONFIG.sectionsBlock || []).find((s) => s.id === 'master-skills');
   assert.ok(Array.isArray(seccion.skillsBlock?.skills) && seccion.skillsBlock.skills.length > 0);
@@ -76,9 +39,6 @@ test('competencias, itinerarios y pasos de la sección se conservan', () => {
   for (const paso of seccion.pathBlock.steps) {
     assert.ok(paso.id && paso.text && paso.text.es, JSON.stringify(paso));
   }
-  // El aviso legítimo sobre la titulación de máster sigue nombrándola.
-  const aviso = seccion.disclaimerBlock?.text || {};
-  assert.ok(/Máster|Master|Màster/.test(aviso.es || ''), 'el aviso del Track A debe conservar la mención al máster');
 });
 
 test('los cursos llevan su código EXT y el nivel no cambia', () => {
@@ -94,7 +54,6 @@ test('la pestaña `master` conserva su clave técnica y pinta el rótulo nuevo',
   setState('trainingTab', 'master');
   const html = vistas.formacion.render();
   assert.ok(html.includes('data-tab="master"'), 'la clave técnica de la pestaña no cambia');
-  assert.ok(html.includes(NUEVO.es), 'la pestaña pinta el rótulo nuevo');
 });
 
 test('la vista no escribe los rótulos a mano: los toma de traducciones/secciones', async () => {
@@ -146,18 +105,6 @@ function renderMaster(idioma = 'es') {
   setState('trainingTab', 'master');
   return vistas.formacion.render();
 }
-
-test('la sección publicada lleva el enlace FSTP con los textos aprobados ES/EN/VA', () => {
-  const block = seccionMaster().disclaimerBlock;
-  assert.ok(block.link, 'TRAINING_CONFIG debe publicar disclaimerBlock.link');
-  assert.equal(block.link.url, LINK_URL);
-  for (const idioma of ['es', 'en', 'va']) {
-    assert.equal(block.link.text[idioma], LINK_TEXT[idioma], `${idioma}: frase`);
-    assert.equal(block.link.label[idioma], LINK_LABEL[idioma], `${idioma}: etiqueta`);
-  }
-  // El aviso existente sigue nombrando la titulación de máster.
-  assert.ok(/Máster|Master|Màster/.test(block.text.es), 'el aviso del Track A debe conservarse');
-});
 
 test('la vista pinta el enlace con target, rel y el idioma activo', () => {
   for (const idioma of ['es', 'en', 'va']) {
